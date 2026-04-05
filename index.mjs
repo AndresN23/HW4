@@ -43,12 +43,12 @@ app.post('/result', async (req, res) => {
         const userData = await userRes.json();
         const user = userData.data[0];
 
-        // Fetch random book
+  
         const bookRes = await fetch('https://fakerapi.it/api/v1/books?_quantity=1');
         const bookData = await bookRes.json();
         const bookInfo = bookData.data[0];
 
-        // Use the typed name
+
         if (name && name.trim().length > 0) {
             const split = name.trim().split(' ');
             user.firstname = split[0];
