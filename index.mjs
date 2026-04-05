@@ -42,6 +42,12 @@ app.post('/result', async (req, res) => {
     const bookRes = await fetch('https://fakerapi.it/api/v1/books?_quantity=1');
     const bookData = await bookRes.json();
     const bookInfo = bookData.data[0];
+
+    if (name && name.trim().length > 0) {
+        const split = name.trim().split(' ');
+        name.firstName = split[0];
+        name.lastName = split[1] || '';    
+    }
     res.render('result.ejs', { name, bookCategory: book, user, bookInfo });
 });
 

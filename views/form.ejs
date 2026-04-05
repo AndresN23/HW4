@@ -9,8 +9,11 @@
     <%- include('partials/header') %>
 
 <form method="POST" action="/result">
+    <label for="name">Persons Name:</label>
     <input type="text" name="name" placeholder="Enter name" required>
-    <select name="book"> 
+
+    <label for="book">Choose a book category:</label>
+    <select id = "book" name="book"> 
         <option value= "fiction">Fiction</option>
         <option value= "mystery">Mystery</option>
         <option value= "science">Science</option>
