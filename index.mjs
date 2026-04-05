@@ -41,8 +41,8 @@ app.post('/result', async (req, res) => {
 
     const bookRes = await fetch('https://fakerapi.it/api/v1/books?_quantity=1');
     const bookData = await bookRes.json();
-    const book = bookData.data[0];
-    res.render('result.ejs', { name,bookCategory: book, user, bookInfo });
+    const bookInfo = bookData.data[0];
+    res.render('result.ejs', { name, bookCategory: book, user, bookInfo });
 });
 
 app.listen(3000, () => {
