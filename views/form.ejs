@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<body>
+
+
+<form method="POST" action="/result">
+    <input type="text" name="name" placeholder="Enter name" required>
+
+    <select name="color">
+        <option value="red">Red</option>
+        <option value="blue">Blue</option>
+        <option value="green">Green</option>
+    </select>
+
+    <button type="submit">Submit</button>
+</form>
+
+<%- include('partials/footer') %>
+</body>
+</html>
