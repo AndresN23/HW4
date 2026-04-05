@@ -35,7 +35,7 @@ app.get('/form', (req, res) => {
 });
 
 app.post('/result', async (req, res) => {
-
+    
     const { name, book } = req.body;
     const userRes = await fetch('https://fakerapi.it/api/v1/users?_quantity=1');
     const userData = await userRes.json();
