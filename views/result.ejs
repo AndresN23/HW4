@@ -3,17 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Result</title>
+    <title>Library Result</title>
 </head>
 <body>
-    <%- include('partials/header') %>
 
-<h1>Result</h1>
+<h1>Library Result</h1>
 
-<p>Hello <%= name %>!</p>
-<p>Your favorite color might be <%= color %></p>
+<h2>User Information</h2>
+<p>Name: <%= name.firstName %></p>
+
+<h2> Generated USer info:</h2>
+<p>First Name: <%= name.firstName %></p>
+<p>Last Name: <%= name.lastName %></p>
+<p>Email: <%= name.email %></p>
+<p><Address><%= name.address %></Address></p>
+
+<h2> Checked Out Book:</h2>
+<p>Title: <%= book.title %></p>
+<p>Author: <%= book.author %></p>
+<p>Category: <%= book.category %></p>
 
 <%- include('partials/footer') %>
-
 </body>
+
 </html>

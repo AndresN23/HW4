@@ -33,9 +33,15 @@ app.get('/form', (req, res) => {
     res.render('form.ejs');
 });
 
-app.post('/result', (req, res) => {
-    const { name, color } = req.body;
-    res.render('result.ejs', { name, color });
+app.post('/result', async (req, res) => {
+    const userRes = await fetch('https://fakerapi.it/api/v1/users?_quantity=1');
+    const userData = await userRes.json();
+    const name = userData.data[0];
+
+    const bookRes = await fetch('https://fakerapi.it/api/v1/books?_quantity=1');
+    const bookData = await bookRes.json();
+    const book = bookData.data[0];
+    res.render('result.ejs', { name,bookCategory: book, user, bookInfo });
 });
 
 app.listen(3000, () => {
