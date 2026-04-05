@@ -35,22 +35,36 @@ app.get('/form', (req, res) => {
 });
 
 app.post('/result', async (req, res) => {
-    
-    const { name, book } = req.body;
-    const userRes = await fetch('https://fakerapi.it/api/v1/users?_quantity=1');
-    const userData = await userRes.json();
-    const user = userData.data[0];
+    try {
+        const { name } = req.body;
 
-    const bookRes = await fetch('https://fakerapi.it/api/v1/books?_quantity=1');
-    const bookData = await bookRes.json();
-    const bookInfo = bookData.data[0];
+        // Fetch random user
+        const userRes = await fetch('https://fakerapi.it/api/v1/users?_quantity=1');
+        const userData = await userRes.json();
+        const user = userData.data[0];
 
-    if (name && name.trim().length > 0) {
-        const split = name.trim().split(' ');
-        name.firstName = split[0];
-        name.lastName = split[1] || '';    
+        // Fetch random book
+        const bookRes = await fetch('https://fakerapi.it/api/v1/books?_quantity=1');
+        const bookData = await bookRes.json();
+        const bookInfo = bookData.data[0];
+
+        // Use the typed name
+        if (name && name.trim().length > 0) {
+            const split = name.trim().split(' ');
+            user.firstname = split[0];
+            user.lastname = split[1] || '';
+        }
+
+        res.render('result.ejs', {
+            name,
+            user,
+            bookInfo
+        });
+
+    } catch (error) {
+        console.error("Error in /result route:", error);
+        res.send("Something went wrong while fetching the data. Please try again.");
     }
-    res.render('result.ejs', { name, bookCategory: book, user, bookInfo });
 });
 
 app.listen(3000, () => {

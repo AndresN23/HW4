@@ -6,22 +6,19 @@
     <title>Form</title>
 </head>
 <body>
-    <%- include('partials/header') %>
+<%- include('partials/header') %>
+
+<h1>Library Lookup</h1>
 
 <form method="POST" action="/result">
-    <label for="name">Persons Name:</label>
-    <input type="text" name="name" placeholder="Enter name" required>
+    <!-- User enters a name -->
+    <label for="name">Person Name:</label>
+    <input type="text" id="name" name="name" placeholder="Enter a name" required>
 
-    <label for="book">Choose a book category:</label>
-    <select id = "book" name="book"> 
-        <option value= "fiction">Fiction</option>
-        <option value= "mystery">Mystery</option>
-        <option value= "science">Science</option>
-        <option value = "fantasy">Fantasy</option>
-    </select>
-    <button type="submit">Submit</button>
+    <!-- Submit button -->
+    <button type="submit">Search</button>
 </form>
 
-<%- include('partials/footer') %>
+<%- include('partials/footer') %
 </body>
 </html>
