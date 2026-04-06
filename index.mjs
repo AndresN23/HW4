@@ -37,17 +37,13 @@ app.get('/form', (req, res) => {
 app.post('/result', async (req, res) => {
     try {
         const { name } = req.body;
-
-        // Fetch random user
         const userRes = await fetch('https://fakerapi.it/api/v1/users?_quantity=1');
         const userData = await userRes.json();
         const user = userData.data[0];
-
   
         const bookRes = await fetch('https://fakerapi.it/api/v1/books?_quantity=1');
         const bookData = await bookRes.json();
         const bookInfo = bookData.data[0];
-
 
         if (name && name.trim().length > 0) {
             const split = name.trim().split(' ');
@@ -62,8 +58,8 @@ app.post('/result', async (req, res) => {
         });
 
     } catch (error) {
-        console.error("Error in /result route:", error);
-        res.send("Something went wrong while fetching the data. Please try again.");
+        console.error(error);
+        res.send("Damn bruh its fucked");
     }
 });
 
